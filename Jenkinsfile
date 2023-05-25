@@ -16,7 +16,7 @@ pipeline {
         
         stage('Checkout Source') {
             steps {
-                git 'https://github.com/A-khchan/first_docker.git'
+                git branch: 'main', url: 'https://github.com/A-khchan/first_docker.git'
             }
         }
         
