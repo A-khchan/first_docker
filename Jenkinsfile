@@ -14,6 +14,7 @@ pipeline {
                 sh "whoami"
                 sh "pwd"
                 sh "ls -l /usr/bin/"
+                sh "which docker > which_docker.txt"
                 sh "docker"
             }
         }
