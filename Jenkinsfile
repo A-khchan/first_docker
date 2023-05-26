@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Hello World'
                 sh "whoami"
-                sh "which docker"
+                sh "pwd"
             }
         }
         
