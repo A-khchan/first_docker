@@ -11,6 +11,10 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
+                sh "whoami"
+                sh "pwd"
+                sh "ls -l /usr/bin/"
+                sh "which docker > which_docker.txt"
                 
             }
         }
@@ -18,6 +22,14 @@ pipeline {
         stage('Checkout Source') {
             steps {
                 git branch: 'main', url: 'https://github.com/A-khchan/first_docker.git'
+            }
+        }
+
+        stage('Build docker image by sh') {
+            steps {
+                sh '''
+                    docker build -t ${dockerimagename} -entrypoint="""/bin/bash"""
+                '''
             }
         }
         
