@@ -28,7 +28,7 @@ pipeline {
         stage('Build docker image by sh') {
             steps {
                 sh '''
-                    docker build -t ${dockerimagename} -entrypoint="/bin/bash"
+                    docker build -t ${dockerimagename} -entrypoint="""/bin/bash"""
                 '''
             }
         }
