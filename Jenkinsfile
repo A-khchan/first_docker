@@ -13,6 +13,7 @@ pipeline {
                 echo 'Hello World'
                 sh "whoami"
                 sh "pwd"
+                sh "ls -l /usr/bin/"
             }
         }
         
