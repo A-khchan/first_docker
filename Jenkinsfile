@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Hello World'
                 sh "whoami"
+                sh "where docker"
             }
         }
         
