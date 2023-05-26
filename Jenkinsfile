@@ -24,6 +24,12 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/A-khchan/first_docker.git'
             }
         }
+
+        stage('Build docker image by sh') {
+            steps {
+                sh "docker build -t $(dockerimagename) -entrypoint=""/bin/bash"""
+            }
+        }
         
         stage('Create docker image') {
             steps {
