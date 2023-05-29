@@ -39,9 +39,9 @@ pipeline {
                         spec:
                             containers:
                             - name: agentpod
-                                image: first-docker
-                                ports:
-                                - containerPort: 8080
+                              image: first-docker
+                              ports:
+                              - containerPort: 8080
                     '''
                 }
             }
