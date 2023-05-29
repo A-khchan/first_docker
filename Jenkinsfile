@@ -34,26 +34,16 @@ pipeline {
             agent {
                 kubernetes {
                     yaml '''
-                        apiVersion: apps/v1
-                        kind: Deployment
+                        apiVersion: v1
+                        kind: Pod
                         metadata:
-                        name: first-kube
+                        name: agentpod
                         labels:
-                            app: first-kube
+                            app: agentpod
                         spec:
-                        replicas: 2
-                        selector:
-                            matchLabels:
-                            app: first-kube
-                        template:
-                            metadata:
-                            labels:
-                                app: first-kube
-                            spec:
                             containers:
-                            - name: first-kube
+                            - name: agentpod
                                 image: first-docker
-                                imagePullPolicy: Never
                                 resources:
                                 limits:
                                     memory: "128Mi"
@@ -66,7 +56,7 @@ pipeline {
             
             steps {
                 script {
-                    container('first_kube') {
+                    container('agentpod') {
                         sh 'ls -l'
                     }
                 }
