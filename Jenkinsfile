@@ -30,16 +30,23 @@ pipeline {
         }
         
         stage('Deploy to Kubernetes') {
+            /*
             agent {
                 kubernetes {
                     yaml 'first_kube.yaml'
                 }
             }
+            */
             steps {
                 script {
-                    kubernetesApply(file: "first_kube.yaml", environment: "dev")
+                    //kubernetesApply(file: "first_kube.yaml", environment: "dev")
                     //kubernetesApply(file: "first_service.yaml", environment: "dev")
+                    def yamlFile = file('first_kube.yaml')
+                    kubernetes {
+                        yaml yamlFile
+                    }
                 }
+                
             }
         }
         
