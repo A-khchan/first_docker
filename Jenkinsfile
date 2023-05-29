@@ -3,6 +3,7 @@ pipeline {
     environment {
         dockerimagename = "first-docker"
         dockerImage = ""
+        yamlFile = file('first_kube.yaml')
     }
     
     agent any
@@ -32,7 +33,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             
             agent {
-                def yamlFile = file('first_kube.yaml')
+            
                 kubernetes {
                     yaml yamlFile
                 }
