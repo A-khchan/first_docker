@@ -37,7 +37,7 @@ pipeline {
             }
             steps {
                 script {
-                    //kubernetesApply(file: "first_kube.yaml", environment: "dev")
+                    kubernetesApply(file: "first_kube.yaml", environment: "dev")
                     //kubernetesApply(file: "first_service.yaml", environment: "dev")
                 }
             }
