@@ -33,9 +33,11 @@ pipeline {
         stage('Deploy to Kubernetes') {
             
             agent {
-            
-                kubernetes {
-                    yaml file('first_kube.yaml')
+                script {
+                    def yamlFile = file('first_kube.yaml')
+                    kubernetes {
+                        yaml yamlFile
+                    }
                 }
             }
             
