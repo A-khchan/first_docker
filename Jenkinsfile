@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh "kubectl apply -f first_kube.yaml -f first_service.yaml"
+                    kubernetesApply(file: ['first_kube.yaml', 'first_service.yaml'])
                 }
             }
         }
