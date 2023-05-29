@@ -36,18 +36,10 @@ pipeline {
                     yaml '''
                         apiVersion: v1
                         kind: Pod
-                        metadata:
-                        name: agentpod
-                        labels:
-                            app: agentpod
                         spec:
                             containers:
                             - name: agentpod
                                 image: first-docker
-                                resources:
-                                limits:
-                                    memory: "128Mi"
-                                    cpu: "500m"
                                 ports:
                                 - containerPort: 8080
                     '''
