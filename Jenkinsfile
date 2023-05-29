@@ -35,7 +35,7 @@ pipeline {
             agent {
             
                 kubernetes {
-                    yaml yamlFile
+                    yaml file('first_kube.yaml')
                 }
             }
             
