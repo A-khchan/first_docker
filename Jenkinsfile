@@ -31,28 +31,10 @@ pipeline {
         }
         
         stage('Deploy to Kubernetes') {
-            agent {
-                kubernetes {
-                    yaml '''
-                        apiVersion: v1
-                        kind: Pod
-                        spec:
-                            containers:
-                            - name: agentpod
-                              image: first-docker
-                              ports:
-                              - containerPort: 8080
-                    '''
-                }
-            }
-            
             steps {
                 script {
-                    container('agentpod') {
-                        sh 'ls -l'
-                    }
+                    kubernetesDeploy(configs: "first_kube.yaml", "first_service.yaml")
                 }
-                
             }
         }
         
