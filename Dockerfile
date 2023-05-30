@@ -5,4 +5,4 @@ COPY src/html /usr/share/nginx/html
 
 #CMD ["nginx", "-g", "daemon off;"]
 
-# docker build -t first_docker .
+# docker build -t first-docker .

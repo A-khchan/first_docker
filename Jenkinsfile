@@ -27,14 +27,17 @@ pipeline {
                 script {
                     dockerImage = docker.build dockerimagename
                 }
+                sshagent(['SSH-credentials']) {
+                    sh 'ssh -o StrictHostKeyChecking=no -l albertchan host.docker.internal /usr/local/bin/docker build -t first-docker /Users/albertchan/Documents/Docker/First-docker'
+                    sh 'ssh -o StrictHostKeyChecking=no -l albertchan host.docker.internal /usr/local/bin/kubectl delete deployment first-kube'
+                }
             }
         }
         
         stage('Deploy to Kubernetes') {
             steps {
-                script {
-                    kubernetesDeploy(configs: "simple_nginx.yaml", kubeconfigId: "mykubeconfig")
-                    
+                sshagent(['SSH-credentials']) {
+                    sh 'ssh -o StrictHostKeyChecking=no -l albertchan host.docker.internal /usr/local/bin/kubectl apply -f /Users/albertchan/Documents/Docker/First-docker/first_kube.yaml'
                 }
             }
         }
